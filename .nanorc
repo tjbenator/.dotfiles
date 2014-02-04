@@ -1,8 +1,11 @@
 set smooth
-set nowrap
 set autoindent
 set mouse
 set undo
+
+#In conjunction with "alias nano='nano -u'" in the .bashrc file; This will allow the ability to undo (ALT-U) and redo (ALT-E)
+set nowrap
+
 
 ## Nanorc files
 include "/usr/share/nano/nanorc.nanorc"
