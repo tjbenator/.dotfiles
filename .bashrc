@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Colors courtesy of @garybernhardt
+# https://github.com/garybernhardt/dotfiles/blob/master/bin/bash_colors.sh
 DULL=0
 BRIGHT=1
 
@@ -86,6 +88,8 @@ shopt -s checkwinsize
 
 
 # Git prompt components
+# Courtesy of @garybernhardt
+# https://github.com/garybernhardt/dotfiles/blob/master/.bashrc
 function minutes_since_last_commit {
     now=`date +%s`
     last_commit=`git log --pretty=format:'%at' -1`
@@ -116,9 +120,6 @@ PS1="${BRIGHT_GREEN}\u@\h:${BRIGHT_BLUE}\w${NORMAL}\$(grb_git_prompt): "
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -185,5 +186,3 @@ default() {
 		fi
 	fi
 }
-
-
