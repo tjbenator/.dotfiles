@@ -1,9 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
-# Colors courtesy of @garybernhardt
-# https://github.com/garybernhardt/dotfiles/blob/master/bin/bash_colors.sh
+# Colors 
+# Source: @garybernhardt https://github.com/garybernhardt/dotfiles/blob/master/bin/bash_colors.sh
 DULL=0
 BRIGHT=1
 
@@ -88,8 +86,7 @@ shopt -s checkwinsize
 
 
 # Git prompt components
-# Courtesy of @garybernhardt
-# https://github.com/garybernhardt/dotfiles/blob/master/.bashrc
+# Source: @garybernhardt https://github.com/garybernhardt/dotfiles/blob/master/.bashrc
 function minutes_since_last_commit {
     now=`date +%s`
     last_commit=`git log --pretty=format:'%at' -1`
