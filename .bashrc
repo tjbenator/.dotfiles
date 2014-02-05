@@ -80,9 +80,9 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-. /usr/share/git/completion/git-prompt.sh
-. /usr/share/git/completion/git-completion.bash
-
+[ -f /usr/share/git/completion/git-prompt.sh ] && . /usr/share/git/completion/git-prompt.sh
+[ -f /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
+[ -f /etc/bash_completion.d/git ] && . /etc/bash_completion.d/git 
 
 
 # Git prompt components
@@ -146,6 +146,7 @@ fi
 
 #Unlock SSH private key
 SSH_ENV=$HOME/.ssh/environment
+
 # start the ssh-agent
 function start_agent {
     echo "Initializing new SSH agent..."
@@ -162,8 +163,6 @@ if [ -f "${SSH_ENV}" ]; then
      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
         start_agent;
     }
-else
-    start_agent;
 fi
 
 #Auto complete hosts from .ssh/config
