@@ -1,12 +1,18 @@
 set smooth
-set autoindent
-set mouse
-set undo
+
+#set autoindent
+
+#This breaks highlighting :(
+#set mouse
 
 #In conjunction with "alias nano='nano -u'" in the .bashrc file; This will allow the ability to undo (ALT-U) and redo (ALT-E)
+set undo
+
 set nowrap
 
-
+############################
+#Syntax Highlighting!
+############################
 ## Nanorc files
 include "/usr/share/nano/nanorc.nanorc"
 
