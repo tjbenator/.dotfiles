@@ -98,6 +98,9 @@ grb_git_prompt() {
     local g="$(__gitdir)"
     if [ -n "$g" ]; then
         local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
+	time="$MINUTES_SINCE_LAST_COMMIT"
+
+	local format="m"
         if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
             local COLOR=${RED}
         elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
@@ -105,7 +108,16 @@ grb_git_prompt() {
         else
             local COLOR=${GREEN}
         fi
-        local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${NORMAL}"
+
+	if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 1440 ]; then
+		time="$(expr $MINUTES_SINCE_LAST_COMMIT / 1440 )"
+		format="d"
+	elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 60 ]; then
+		time="$(expr $MINUTES_SINCE_LAST_COMMIT / 60)"
+		format="h"
+	fi
+
+        local SINCE_LAST_COMMIT="${COLOR}${time}${format}${NORMAL}"
         # The __git_ps1 function inserts the current git branch where %s is
         local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
         echo " ${GIT_PROMPT}"
