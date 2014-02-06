@@ -95,3 +95,5 @@ done
 [ ! -f /usr/share/git/completion/git-completion.bash ] && [ ! -f /etc/bash_completion.d/git ] && error "Your prompt doesn't have git autocompletion enabled."
 
 
+notify "Sourcing .bashrc. Your prompt should change :)"
+source ~/.bashrc
