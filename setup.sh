@@ -75,6 +75,12 @@ backup() {
 	mv $1{,.backup}
 }
 
+###
+# Dependency Check
+###
+[ ! -f /usr/share/git/completion/git-prompt.sh ] && [ ! -f /etc/bash_completion.d/git ] && error "Could not find git-prompt.sh"
+[ ! -f /usr/share/git/completion/git-completion.bash ] && [ ! -f /etc/bash_completion.d/git ] && error "Your prompt doesn't have git autocompletion enabled."
+
 dotfiles=(".bash_aliases" ".bashrc" ".htoprc" ".nanorc" ".screenrc")
 
 for dotfile in "${dotfiles[@]}"; do
@@ -85,15 +91,6 @@ for dotfile in "${dotfiles[@]}"; do
 	[ -f "${homedotfile}" ] && [ ! -L "${homedotfile}" ] && warning "~/$dotfile already exists" && backup "${homedotfile}"
 	#Create dotfile symlink
 	[ ! -L "${homedotfile}" ] && [ ! -f "${homedotfile}" ] && notify "Creating Symlink: ${this}/${dotfile} => ~/${dotfile}" && ln -s "${this}/${dotfile}" "${homedotfile}"
-
 done
 
-###
-# Dependency Check
-###
-[ ! -f /usr/share/git/completion/git-prompt.sh ] && [ ! -f /etc/bash_completion.d/git ] && error "Could not find git-prompt.sh"
-[ ! -f /usr/share/git/completion/git-completion.bash ] && [ ! -f /etc/bash_completion.d/git ] && error "Your prompt doesn't have git autocompletion enabled."
-
-
-notify "Sourcing .bashrc. Your prompt should change :)"
-source ~/.bashrc
+notify "Type \"source ~/.bashrc\" to start using your new prompt\!"
