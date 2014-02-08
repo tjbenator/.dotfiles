@@ -53,9 +53,10 @@ grb_git_prompt() {
         echo " (${BRANCH}|%{$COLOR%}${time}${format}%{$reset_color%})"
     fi
 }
-PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_colors%}:%{$fg_no_bold[yellow]%}%1~%{$reset_color%}$(grb_git_prompt) %# "
-
+PROMPT='%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_colors%}:%{$fg_no_bold[yellow]%}%1~%{$reset_color%}$(grb_git_prompt)\$ '
 RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+
+setopt prompt_subst
 
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
