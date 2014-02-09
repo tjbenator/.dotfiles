@@ -1,3 +1,4 @@
+#!/bin/bash
 #WIP
 
 #Turn git colors on
