@@ -81,7 +81,7 @@ backup() {
 [ ! -f /usr/share/git/completion/git-prompt.sh ] && [ ! -f /etc/bash_completion.d/git ] && error "Could not find git-prompt.sh"
 [ ! -f /usr/share/git/completion/git-completion.bash ] && [ ! -f /etc/bash_completion.d/git ] && error "Your prompt doesn't have git autocompletion enabled."
 
-dotfiles=(".bash_aliases" ".bashrc" ".htoprc" ".nanorc" ".screenrc" ".zshrc")
+dotfiles=(".bash_aliases" ".bashrc" ".htoprc" ".nanorc" ".screenrc" ".zshrc" ".zsh")
 
 for dotfile in "${dotfiles[@]}"; do
 	homedotfile="$(eval echo '~/${dotfile}')"
