@@ -2,10 +2,11 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=1000
-
+EDITOR=nano
 fpath=(~/.zsh/functions $fpath)
 
 source ~/.zsh/git-prompt.sh
+source ~/.zsh/keymap.sh
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
